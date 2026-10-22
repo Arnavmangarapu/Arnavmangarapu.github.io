@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12231f">
+  <meta name="description" content="Mangarapu Sree Arnav — Computer Science undergraduate exploring computer vision, full-stack development, machine learning and cybersecurity.">
+  <title>Sree Arnav — Developer & AI Explorer</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="lenis.css">
+  <link rel="stylesheet" href="mouse-follower.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <script>
+    let savedMotion;
+    try { savedMotion = localStorage.getItem('portfolio-motion'); } catch {}
+    const motionAllowed = savedMotion !== 'off' && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.toggle('motion-off', !motionAllowed);
+    if (motionAllowed) {
+      document.documentElement.classList.add('motion-pending');
+      setTimeout(() => document.documentElement.classList.remove('motion-pending'), 3500);
+    }
+  </script>
+  <script src="content.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="motion-controls.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a href="#profile" class="wordmark" aria-label="Sree Arnav, back to profile">arnav<span>/</span>x</a>
+  <nav aria-label="Main navigation" id="navigation">
+    <a href="#profile" aria-current="location"><span>01</span> Profile</a>
+    <a href="#projects"><span>02</span> Projects</a>
+    <a href="#experience"><span>03</span> Experience</a>
+    <a href="#skills"><span>04</span> Skills</a>
+    <a href="#contact"><span>05</span> Contact me <i aria-hidden="true">↗</i></a>
+  </nav>
+  <button class="motion-toggle" id="motion-toggle" role="switch" aria-checked="true" aria-label="Animations" title="Turn off animations for a lighter experience"><span class="motion-label">Motion on</span><span class="motion-track" aria-hidden="true"><span></span></span></button>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Open menu"><span></span><span></span></button>
+  <span class="sr-only" id="motion-status" role="status" aria-live="polite"></span>
+</header>
+<main id="main">
+  <section class="hero" id="profile" aria-labelledby="hero-title">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-art" aria-hidden="true"><img src="knot.svg" alt="" fetchpriority="high"></div>
+    <div class="hero-top"><span>Mangarapu Sree Arnav</span><span>Hyderabad, India <span class="location-dot">●</span></span></div>
+    <div class="hero-copy">
+      <p class="hero-role">Developer / AI explorer</p>
+      <h1 id="hero-title">IDEAS INTO<br>INTELLIGENCE.</h1>
+      <p class="hero-description">I build at the intersection of computer vision,<br class="desktop-break"> full-stack development and machine learning.<br class="desktop-break"> Curious by nature. An engineer in the making.</p>
+      <a class="split-button" href="#projects"><span>Explore my work</span><b aria-hidden="true">↘</b></a>
+    </div>
+    <div class="hero-bottom"><span>Computer Science @ KMIT</span><a href="#about">Scroll to discover <span aria-hidden="true">↓</span></a><span>Portfolio / 2026</span></div>
+  </section>
+  <div class="ticker" aria-label="Computer vision, full-stack development, AI and machine learning, cybersecurity"><div aria-hidden="true">COMPUTER VISION <span>×</span> FULL-STACK DEVELOPMENT <span>↗</span> AI & MACHINE LEARNING <span>×</span> CYBERSECURITY <span>↗</span> COMPUTER VISION <span>×</span> FULL-STACK DEVELOPMENT <span>↗</span> AI & MACHINE LEARNING <span>×</span> CYBERSECURITY <span>↗</span></div></div>
+  <div id="about" class="about light-section">
+    <div class="section-label"><span>A little about me</span><span aria-hidden="true">＋</span></div>
+    <p class="about-statement">Turning curiosity into<br>software that <span class="outline-word">sees</span>,<br><span class="outline-word">learns</span> and solves.</p>
+    <div class="about-bottom"><p>I'm a Computer Science undergraduate at Keshav Memorial Institute of Technology. My work spans embedded vision systems, infrastructure observability and behaviour-based cybersecurity.</p><a class="text-link" href="Mangarapu-Sree-Arnav-Resume.pdf" target="_blank" rel="noopener">View résumé <span aria-hidden="true">↗</span></a></div>
+    <div class="milestones"><div><strong>2024—28</strong><span>B.Tech, Computer Science</span></div><div><strong>Patent</strong><span>Published application #202541100066</span></div><div><strong>2nd prize</strong><span>PRAKALP 2025 Innovation Competition</span></div></div>
+  </div>
+  <section id="projects" aria-labelledby="projects-title" class="projects">
+    <div class="projects-heading"><div><p class="section-label">02 / Projects</p><h2 id="projects-title">SELECTED<br>EXPLORATIONS<span class="asterisk" aria-hidden="true">✳</span></h2></div><div class="projects-instruction"><p>From real-world signals<br>to working systems.</p><span>Scroll through the projects ↓</span></div></div>
+    <div id="project-list"></div>
+    <noscript><p class="noscript-note">Enable JavaScript to view the project showcase: Helivision, StreamWatch and SRDC. Full details are also in the <a href="Mangarapu-Sree-Arnav-Resume.pdf">résumé</a>.</p></noscript>
+  </section>
+  <section id="experience" class="experience light-section" aria-labelledby="experience-title">
+    <div class="section-label"><span>03 / Experience</span><span aria-hidden="true">＋</span></div>
+    <div class="section-opening"><h2 id="experience-title">ALWAYS<br>IN THE MAKING.</h2><p>Learning the fundamentals.<br>Building beyond the classroom.</p></div>
+    <div class="timeline-row"><p class="timeline-date">Aug 2024 — 2028</p><div><h3>Computer Science & Engineering</h3><p>Keshav Memorial Institute of Technology</p><span class="small-note">Bachelor of Technology · Undergraduate</span></div><span class="timeline-type">Education</span></div>
+    <div class="timeline-row placeholder-row"><p class="timeline-date">[ Dates ]</p><div><h3>[ Role / position ]</h3><p>[ Company / organisation ]</p><span class="small-note">[ Add internship or professional experience here ]</span></div><span class="timeline-type">Placeholder</span></div>
+    <div class="recognition"><h3>A few milestones along the way.</h3><div><p><span>Recognition</span>Published Indian Patent Application <small>#202541100066</small></p><p><span>2025</span>2nd Prize, PRAKALP Innovation Competition</p></div></div>
+  </section>
+  <section id="skills" class="skills light-section" aria-labelledby="skills-title">
+    <div class="section-label"><span>04 / Skills</span><span aria-hidden="true">＋</span></div>
+    <div class="section-opening"><h2 id="skills-title">THE TOOLKIT.</h2><p>Different tools.<br>One instinct to figure things out.</p></div>
+    <div id="skill-list" class="skill-list"></div>
+    <div class="certifications"><p>Certifications & learning</p><ul><li>OCI AI Foundations Associate <span>2025</span></li><li>Anthropic: Introduction to Model Context Protocol</li><li>Anthropic: Model Context Protocol — Advanced Topics</li></ul></div>
+  </section>
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="section-label"><span>05 / Contact me</span><span aria-hidden="true">＋</span></div>
+    <div class="contact-heading"><h2 id="contact-title">LET'S BUILD<br>SOMETHING.</h2><a href="mailto:arnavmangarapu96@gmail.com" class="contact-arrow" aria-label="Email Arnav">↗</a></div>
+    <div class="contact-bottom"><p>Have an idea, an opportunity,<br>or something interesting to share?<br>I'd love to hear about it.</p><div class="contact-links"><a href="mailto:arnavmangarapu96@gmail.com">arnavmangarapu96@gmail.com <span>↗</span></a><a href="https://github.com/Arnavmangarapu" target="_blank" rel="noopener">GitHub <span>↗</span></a><a href="https://www.linkedin.com/in/mangarapu-sree-arnav-612a98325/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a><button id="copy-email">Copy email address <span aria-hidden="true">⧉</span></button><span class="copy-status" role="status" aria-live="polite"></span></div></div>
+    <footer><a class="wordmark" href="#profile">arnav<span>/</span>x</a><span>© <span id="year">2026</span> Mangarapu Sree Arnav</span><a href="#profile">Back to top ↑</a></footer>
+  </section>
+</main>
+<dialog id="project-dialog" data-lenis-prevent aria-labelledby="dialog-title"><div class="dialog-top"><span>Project notes</span><button id="close-dialog" aria-label="Close project details">✕</button></div><div id="dialog-content"></div></dialog>
+</body>
+</html>

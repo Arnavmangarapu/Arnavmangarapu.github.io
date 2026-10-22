@@ -1,0 +1,53 @@
+/* Presentation overrides for the bundled GSAP, Lenis and Cuberto components. */
+.motion-pending .hero-copy,.motion-pending .hero-art,.motion-pending .hero-top,.motion-pending .hero-bottom{visibility:hidden}
+.motion-enhanced{scroll-behavior:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.motion-toggle{display:flex;align-items:center;gap:10px;background:none;padding:12px 0;font:9px var(--mono);white-space:nowrap}
+.motion-toggle:disabled{opacity:.7;cursor:default}
+.motion-track{width:29px;height:17px;border:1px solid #799c86;border-radius:20px;padding:3px;display:block;background:#243d2e}
+.motion-track>span{display:block;width:9px;height:9px;border-radius:50%;background:#c2eed8;transform:translateX(12px);transition:transform .2s}
+.motion-toggle[aria-checked=false] .motion-track{background:transparent;border-color:#a4b9b055}
+.motion-toggle[aria-checked=false] .motion-track>span{transform:translateX(0);background:#91a599}
+.motion-off{scroll-behavior:auto!important}
+.motion-off *,.motion-off *:before,.motion-off *:after{animation:none!important;transition:none!important}
+.motion-off .site-header{backdrop-filter:none;background:#12231f}
+.motion-off dialog::backdrop{backdrop-filter:none}
+.motion-off .hero-art{filter:none}
+.motion-off .nav-indicator,.motion-off .header-progress,.motion-off .mf-cursor{display:none}
+.site-header nav{position:relative;isolation:isolate}
+.site-header nav a{z-index:1}
+.motion-enhanced .site-header nav a[aria-current]:after{display:none}
+.nav-indicator{position:absolute;top:0;left:0;pointer-events:none;z-index:0;background:rgba(189,225,204,.075);border-bottom:1px solid #c2eed8;border-radius:2px;will-change:transform,width;opacity:0}
+.header-progress{position:absolute;bottom:-1px;left:0;height:2px;width:100%;background:#b1d6be;transform:scaleX(0);transform-origin:0 50%;pointer-events:none;opacity:.65}
+.site-header nav a,.text-link,.contact-links a,.project-actions a{transition:color .2s}
+.site-header nav a:hover,.contact-links a:hover,.project-actions a:hover{color:#c5edd6}
+.light-section .text-link:hover{color:#3b7056}
+.project-art-open{position:absolute;inset:0;background:transparent;z-index:3;width:100%;height:100%;border:0;padding:0}
+.project-art-open:focus-visible{outline-offset:-6px}
+.visual-frame{transition:border-color .3s}
+.visual-frame:has(.project-art-open:hover),.visual-frame:has(.project-art-open:focus-visible){border-color:#a4cfad}
+.visual-caption{z-index:2;pointer-events:none}
+.split-word{white-space:nowrap}
+.mf-cursor{color:#d9eee3;z-index:100;mix-blend-mode:difference}
+.mf-cursor:before{top:-30px;left:-30px;width:60px;height:60px;transform:scale(.1)}
+.mf-cursor.-pointer:before{transform:scale(.55)}
+.mf-cursor.-active:before{transform:scale(.35)}
+.mf-cursor.-text{mix-blend-mode:normal}
+.mf-cursor.-text:before{transform:scale(1.15);opacity:.95}
+.mf-cursor.-text.-active:before{transform:scale(1.05)}
+.mf-cursor.-hidden:before{transform:scale(0)}
+.mf-cursor-text{color:#14221e;font:10px var(--mono)}
+html:not(.cursor-ready) .mf-cursor,.dialog-open .mf-cursor{opacity:0!important}
+@media(hover:hover) and (pointer:fine){
+  .cursor-ready:not(.dialog-open),.cursor-ready:not(.dialog-open) a,.cursor-ready:not(.dialog-open) button{cursor:none}
+}
+@media(max-width:640px){
+  .motion-toggle{margin-left:auto;margin-right:18px;font-size:9px;gap:7px}
+  .site-header nav{position:absolute}
+  .nav-indicator{border-bottom:0;border-left:2px solid #c2eed8;background:rgba(189,225,204,.06)}
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-pending .hero-copy,.motion-pending .hero-art,.motion-pending .hero-top,.motion-pending .hero-bottom{visibility:visible}
+  .mf-cursor{display:none!important}
+  .cursor-ready,.cursor-ready a,.cursor-ready button{cursor:auto!important}
+}
