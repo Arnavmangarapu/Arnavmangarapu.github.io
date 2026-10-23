@@ -47,3 +47,18 @@
 .motion-off .outline-word{backdrop-filter:none;-webkit-backdrop-filter:none}
 html.motion-off::view-transition-old(root),html.motion-off::view-transition-new(root){animation:none}
 @media(max-height:850px){.project{position:relative;top:auto}}
+/* Keep first paint lightweight and readable while optional motion initializes. */
+.hero-art{filter:none}
+.opportunities{position:relative}
+.legacy-anchor{position:absolute;top:0}
+.opportunities .section-opening h2{font-size:clamp(35px,5.1vw,80px);max-width:850px}
+.opportunity-intro{display:flex;justify-content:space-between;align-items:center;gap:40px;padding-bottom:40px}
+.opportunity-intro>p{font:14px/1.9 var(--mono);max-width:680px}
+.opportunity-intro .text-link{min-width:160px;font-size:14px}
+.opportunity-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px dashed var(--line)}
+.opportunity-list>div{padding:30px 30px 30px 0}
+.opportunity-list h3{font-size:23px;font-weight:400;letter-spacing:-.035em;margin-bottom:15px}
+.opportunity-list p{font:12px/1.9 var(--mono);color:#4b5f53}
+.study-note{font:11px/1.8 var(--mono);padding-top:24px;border-top:1px dashed var(--line);color:#4b5f53}
+.visual-caption{pointer-events:auto}
+@media(max-width:640px){.opportunity-intro{display:block}.opportunity-intro>p{font-size:12px}.opportunity-intro .text-link{margin-top:22px;width:max-content}.opportunity-list{grid-template-columns:1fr}.opportunity-list>div{padding:25px 0;border-bottom:1px dashed var(--line)}.opportunity-list>div:last-child{border:0}.opportunities .section-opening h2{font-size:clamp(30px,8.1vw,48px)}}

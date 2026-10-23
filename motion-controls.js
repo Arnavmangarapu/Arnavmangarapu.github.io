@@ -9,18 +9,20 @@
   try { preference = localStorage.getItem('portfolio-motion') || 'on'; } catch {}
   const loadScript = src => new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = src + '?v=20261023-projects';
+    script.async = false;
+    script.src = src + '?v=20261023-fast';
     script.onload = resolve;
     script.onerror = () => { script.remove(); reject(new Error('Animation script unavailable')); };
     document.head.append(script);
   });
   const loadAnimations = () => loading ||= (async () => {
-    await loadScript('gsap.min.js');
-    await Promise.all(['ScrollTrigger.min.js', 'SplitText.min.js', 'lenis.min.js', 'mouse-follower.min.js'].map(loadScript));
-    await loadScript('reactbits-splittext.js');
-    await loadScript('animations.js');
+    const scripts = document.body.classList.contains('project-page')
+      ? ['gsap.min.js', 'lenis.min.js', 'animations.js']
+      : ['gsap.min.js', 'ScrollTrigger.min.js', 'SplitText.min.js', 'lenis.min.js', ...(matchMedia('(hover: hover) and (pointer: fine)').matches ? ['mouse-follower.min.js'] : []), 'reactbits-splittext.js', 'animations.js'];
+    // Fetch in parallel; async=false preserves dependency execution order.
+    await Promise.all(scripts.map(loadScript));
   })();
-  const apply = async (announce = false) => {
+  const apply = async (announce = false, enhance = true) => {
     enabled = preference !== 'off' && !systemMotion.matches;
     root.classList.toggle('motion-off', !enabled);
     root.dataset.motion = enabled ? 'on' : 'off';
@@ -34,6 +36,7 @@
       window.PortfolioMotion?.setEnabled(false);
       return;
     }
+    if (!enhance) return;
     toggle.setAttribute('aria-busy', 'true');
     try {
       await loadAnimations();
@@ -58,5 +61,10 @@
     apply(true);
   });
   systemMotion.addEventListener('change', () => apply(true));
-  apply();
+  apply(false, false);
+  // Paint readable content before optional enhancement work.
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if ('requestIdleCallback' in window) requestIdleCallback(() => apply(), { timeout: 1200 });
+    else setTimeout(() => apply(), 0);
+  }));
 })();

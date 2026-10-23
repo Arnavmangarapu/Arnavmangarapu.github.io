@@ -6,26 +6,26 @@
   <meta name="theme-color" content="#12231f">
   <meta name="description" content="A secure MongoDB workspace for natural-language queries and system monitoring.">
   <title>StreamWatch — Arnav</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;450;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="lenis.css?v=20261023-projects">
-  <link rel="stylesheet" href="mouse-follower.min.css?v=20261023-projects">
-  <link rel="stylesheet" href="styles.css?v=20261023-projects">
-  <link rel="stylesheet" href="animations.css?v=20261023-projects">
-  <link rel="stylesheet" href="project-visuals.css?v=20261023-projects">
-  <link rel="stylesheet" href="refinements.css?v=20261023-projects">
+  <link rel="stylesheet" href="lenis.css?v=20261023-fast">
+  <link rel="stylesheet" href="mouse-follower.min.css?v=20261023-fast">
+  <link rel="stylesheet" href="styles.css?v=20261023-fast">
+  <link rel="stylesheet" href="animations.css?v=20261023-fast">
+  <link rel="stylesheet" href="project-visuals.css?v=20261023-fast">
+  <link rel="stylesheet" href="refinements.css?v=20261023-fast">
   <script>
     let savedMotion;
     try { savedMotion = localStorage.getItem('portfolio-motion'); } catch {}
     const motionAllowed = savedMotion !== 'off' && !matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.documentElement.classList.toggle('motion-off', !motionAllowed);
-    if (motionAllowed) {
-      document.documentElement.classList.add('motion-pending');
-      setTimeout(() => document.documentElement.classList.remove('motion-pending'), 3500);
-    }
+
   </script>
-  <script src="content.js?v=20261023-projects" defer></script>
-  <script src="project-visuals.js?v=20261023-projects" defer></script>
-  <script src="project-page.js?v=20261023-projects" defer></script>
-  <script src="transitions.js?v=20261023-projects" defer></script>
-  <script src="motion-controls.js?v=20261023-projects" defer></script>
+  <script src="content.js?v=20261023-fast" defer></script>
+  <script src="project-visuals.js?v=20261023-fast" defer></script>
+  <script src="project-page.js?v=20261023-fast" defer></script>
+  <script src="transitions.js?v=20261023-fast" defer></script>
+  <script src="motion-controls.js?v=20261023-fast" defer></script>
 </head><body class="project-page" data-project="streamwatch"><header class="site-header case-header"><a class="wordmark" href="index.html#profile">Arnav</a><nav aria-label="Project navigation" id="navigation"><a href="index.html#projects">← All projects</a></nav><button class="motion-toggle" id="motion-toggle" role="switch" aria-checked="true" aria-label="Animations"><span class="motion-label">Motion on</span><span class="motion-track" aria-hidden="true"><span></span></span></button><span class="sr-only" id="motion-status" role="status" aria-live="polite"></span></header><main class="case-main" id="main"><section class="case-intro"><div class="section-label">Full-stack / Infrastructure / Project notes</div><h1>StreamWatch</h1><p>A secure MongoDB workspace for natural-language queries and system monitoring.</p><div id="case-tags" class="project-tags"></div><div class="case-links"><a href="https://github.com/Arnavmangarapu/streamwatch" target="_blank" rel="noopener">View repository ↗</a><a href="#story">Read the story ↓</a></div></section><section class="case-visual"><div><h2>Explore the system</h2><div id="case-diagram" data-visual="monitor"></div></div><p>Hover, focus or tap the controls to explore. Diagram based on project documentation.</p></section><div class="case-story" id="story"><section class="case-section"><h2>The challenge</h2><div><p>StreamWatch combines a natural-language database interface with account security and operational monitoring. Users can turn an English question into a validated MongoDB query and inspect results in the web interface.</p></div></section><section class="case-section"><h2>From question to query</h2><div><ul><li>A React and Vite interface sends a natural-language question to a FastAPI backend.</li><li>Gemini generates a MongoDB query. Security and schema validation check collections, fields and allowed operations before read-only execution.</li><li>Results and query history return to the interface. Prometheus separately scrapes backend /metrics, and Grafana powers the System Vitals dashboard.</li></ul></div></section><section class="case-section"><h2>Building the application</h2><div><p>The repository uses React, Vite and Tailwind for the frontend, FastAPI for the backend, and Motor/PyMongo for MongoDB access. Account features include JWT authentication, OTP email verification, password reset and role-based access. The application includes query history, an admin dashboard and sensor-data CRUD operations. Query protections include destructive-operator blocking, collection and field allowlists, regex checks and read-only aggregation.</p></div></section><section class="case-section"><h2>Explore the diagram</h2><div><p>The interactive view above explains the monitoring flow with illustrative sample signals. It is not connected to a production database, and its values are not live operational measurements.</p></div></section><section class="case-section"><h2>Source & further reading</h2><div><p><a href="https://github.com/Arnavmangarapu/streamwatch" target="_blank" rel="noopener">StreamWatch on GitHub</a></p><p><a href="Mangarapu-Sree-Arnav-Resume.pdf" target="_blank" rel="noopener">Read my résumé</a></p></div></section></div><footer class="case-next"><p>Continue exploring</p><a href="srdc.html">SRDC ↗</a><a href="index.html#projects">All projects</a></footer></main></body></html>

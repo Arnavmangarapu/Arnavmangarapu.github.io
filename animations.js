@@ -3,11 +3,10 @@
   'use strict';
   const root = document.documentElement;
   const { gsap, ScrollTrigger, SplitText, Lenis, MouseFollower } = window;
-  if (!gsap || !ScrollTrigger || !SplitText || !window.PortfolioSplitText) {
+  if (!gsap) {
     root.classList.remove('motion-pending');
     return;
   }
-  gsap.registerPlugin(ScrollTrigger, SplitText);
   if (document.body.classList.contains('project-page')) {
     let context, lenis, cursor;
     const tick = time => lenis?.raf(time * 1000);
@@ -16,11 +15,13 @@
       root.classList.remove('cursor-ready','motion-pending','motion-enhanced');
       if (!enabled) return;
       root.classList.add('motion-enhanced');
-      context = gsap.context(() => gsap.from('.case-intro h1,.case-intro>p,.case-visual', {opacity:0,y:20,duration:.85,stagger:.12,ease:'power3.out'}));
+      // Content stays visible when optional motion initializes after paint.
       lenis = new Lenis({duration:1.8,lerp:0}); gsap.ticker.add(tick);
     }};
     return;
   }
+  if (!ScrollTrigger || !SplitText || !window.PortfolioSplitText) return;
+  gsap.registerPlugin(ScrollTrigger, SplitText);
   const navigation = document.querySelector('#navigation');
   const indicator = document.createElement('span');
   indicator.className = 'nav-indicator';
@@ -30,7 +31,7 @@
   progress.className = 'header-progress';
   progress.setAttribute('aria-hidden', 'true');
   document.querySelector('.site-header').append(progress);
-  let motionContext, fontsReady = false, requested = false;
+  let motionContext, requested = false;
 
   // A single GSAP tween moves the same marker; no separate per-link indicators.
   const placeIndicator = (immediate = false) => {
@@ -50,13 +51,16 @@
   placeIndicator(true);
 
   const startMotion = () => {
-    if (motionContext || !fontsReady || !requested) return;
+    if (motionContext || !requested) return;
     root.classList.add('motion-enhanced');
     motionContext = gsap.context(() => {
       const abort = new AbortController();
       const listen = (node, event, handler, options = {}) => node.addEventListener(event, handler, { ...options, signal: abort.signal });
       const splits = [];
-      const reveal = (element, options) => splits.push(window.PortfolioSplitText(element, options));
+      const reveal = (element, options) => {
+        if (element.getBoundingClientRect().top < innerHeight) return;
+        splits.push(window.PortfolioSplitText(element, options));
+      };
       let lenis, cursor;
       const tick = time => lenis?.raf(time * 1000);
       if (Lenis) {
@@ -90,14 +94,7 @@
         listen(document, 'pointermove', e => { if (e.pointerType === 'mouse') root.classList.add('cursor-ready'); }, { passive: true });
         listen(document, 'keydown', e => { if (e.key === 'Tab') root.classList.remove('cursor-ready'); });
       }
-      // React Bits' rise and blur presets, staggered into a gradual intro.
-      reveal(document.querySelector('#hero-title'), { splitType: 'words,chars', trigger: 'load', delay: 27, duration: 1.1, startDelay: .2, mask: true });
-      reveal(document.querySelector('.hero-description'), { splitType: 'lines', trigger: 'load', delay: 130, duration: 1, startDelay: .65, effect: 'blur' });
-      gsap.from('.hero-top,.hero-role', { opacity: 0, y: 12, duration: .9, stagger: .16, ease: 'power3.out' });
-      gsap.from('.hero-art', { opacity: 0, scale: .88, duration: 1.9, ease: 'power2.out', delay: .15 });
-      gsap.from('.hero .split-button,.hero-bottom', { opacity: 0, y: 15, duration: .85, stagger: .18, delay: 1.05, ease: 'power3.out' });
-      root.classList.remove('motion-pending');
-
+      // The above-the-fold hero is already visible. Never hide/replay it after scripts arrive.
       reveal(document.querySelector('.about-statement'), { splitType: 'words', effect: 'blur', delay: 65, duration: .9 });
       document.querySelectorAll('.projects-heading h2,.section-opening h2,.contact-heading h2').forEach(el => {
         reveal(el, { splitType: 'words,chars', delay: 22, duration: .9, mask: true });
@@ -149,9 +146,4 @@
       placeIndicator(true);
     }
   };
-  Promise.race([document.fonts.ready, new Promise(resolve => setTimeout(resolve, 1500))]).then(() => {
-    fontsReady = true;
-    startMotion();
-    root.classList.remove('motion-pending');
-  }).catch(() => root.classList.remove('motion-pending'));
 })();
