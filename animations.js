@@ -8,8 +8,20 @@
     return;
   }
   gsap.registerPlugin(ScrollTrigger, SplitText);
+  if (document.body.classList.contains('project-page')) {
+    let context, lenis, cursor;
+    const tick = time => lenis?.raf(time * 1000);
+    window.PortfolioMotion = { setEnabled(enabled) {
+      context?.revert(); context = null; gsap.ticker.remove(tick); lenis?.destroy(); cursor?.destroy();
+      root.classList.remove('cursor-ready','motion-pending','motion-enhanced');
+      if (!enabled) return;
+      root.classList.add('motion-enhanced');
+      context = gsap.context(() => gsap.from('.case-intro h1,.case-intro>p,.case-visual', {opacity:0,y:20,duration:.85,stagger:.12,ease:'power3.out'}));
+      lenis = new Lenis({duration:1.8,lerp:0}); gsap.ticker.add(tick);
+    }};
+    return;
+  }
   const navigation = document.querySelector('#navigation');
-  const dialog = document.querySelector('#project-dialog');
   const indicator = document.createElement('span');
   indicator.className = 'nav-indicator';
   indicator.setAttribute('aria-hidden', 'true');
@@ -78,15 +90,6 @@
         listen(document, 'pointermove', e => { if (e.pointerType === 'mouse') root.classList.add('cursor-ready'); }, { passive: true });
         listen(document, 'keydown', e => { if (e.key === 'Tab') root.classList.remove('cursor-ready'); });
       }
-      const syncDialog = () => {
-        root.classList.toggle('dialog-open', dialog.open);
-        if (dialog.open) { lenis?.stop(); cursor?.hide(); }
-        else { lenis?.start(); cursor?.show(); }
-      };
-      const dialogObserver = new MutationObserver(syncDialog);
-      dialogObserver.observe(dialog, { attributes: true, attributeFilter: ['open'] });
-      syncDialog();
-
       // React Bits' rise and blur presets, staggered into a gradual intro.
       reveal(document.querySelector('#hero-title'), { splitType: 'words,chars', trigger: 'load', delay: 27, duration: 1.1, startDelay: .2, mask: true });
       reveal(document.querySelector('.hero-description'), { splitType: 'lines', trigger: 'load', delay: 130, duration: 1, startDelay: .65, effect: 'blur' });
@@ -123,7 +126,7 @@
       return () => {
         cancelAnimationFrame(refreshFrame);
         abort.abort();
-        dialogObserver.disconnect();
+
         gsap.ticker.remove(tick);
         lenis?.destroy();
         cursor?.destroy();

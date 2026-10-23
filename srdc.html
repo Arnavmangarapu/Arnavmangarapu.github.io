@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12231f">
+  <meta name="description" content="Investigating ransomware through the meaning of system behaviour.">
+  <title>SRDC — Arnav</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="lenis.css?v=20261023-projects">
+  <link rel="stylesheet" href="mouse-follower.min.css?v=20261023-projects">
+  <link rel="stylesheet" href="styles.css?v=20261023-projects">
+  <link rel="stylesheet" href="animations.css?v=20261023-projects">
+  <link rel="stylesheet" href="project-visuals.css?v=20261023-projects">
+  <link rel="stylesheet" href="refinements.css?v=20261023-projects">
+  <script>
+    let savedMotion;
+    try { savedMotion = localStorage.getItem('portfolio-motion'); } catch {}
+    const motionAllowed = savedMotion !== 'off' && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.toggle('motion-off', !motionAllowed);
+    if (motionAllowed) {
+      document.documentElement.classList.add('motion-pending');
+      setTimeout(() => document.documentElement.classList.remove('motion-pending'), 3500);
+    }
+  </script>
+  <script src="content.js?v=20261023-projects" defer></script>
+  <script src="project-visuals.js?v=20261023-projects" defer></script>
+  <script src="project-page.js?v=20261023-projects" defer></script>
+  <script src="transitions.js?v=20261023-projects" defer></script>
+  <script src="motion-controls.js?v=20261023-projects" defer></script>
+</head><body class="project-page" data-project="srdc"><header class="site-header case-header"><a class="wordmark" href="index.html#profile">Arnav</a><nav aria-label="Project navigation" id="navigation"><a href="index.html#projects">← All projects</a></nav><button class="motion-toggle" id="motion-toggle" role="switch" aria-checked="true" aria-label="Animations"><span class="motion-label">Motion on</span><span class="motion-track" aria-hidden="true"><span></span></span></button><span class="sr-only" id="motion-status" role="status" aria-live="polite"></span></header><main class="case-main" id="main"><section class="case-intro"><div class="section-label">Cybersecurity / Machine learning / Project notes</div><h1>SRDC</h1><p>Investigating ransomware through the meaning of system behaviour.</p><div id="case-tags" class="project-tags"></div><div class="case-links"><a href="https://github.com/Arnavmangarapu/SRDC-Ransomware-Detection" target="_blank" rel="noopener">View repository ↗</a><a href="#story">Read the story ↓</a></div></section><section class="case-visual"><div><h2>Explore the system</h2><div id="case-diagram" data-visual="security"></div></div><p>Hover, focus or tap the controls to explore. Diagram based on project documentation and the supplied résumé.</p></section><div class="case-story" id="story"><section class="case-section"><h2>The challenge</h2><div><p>SRDC explores behaviour-based ransomware detection. The project translates system activity into semantic text so that a language model can learn representations of behaviour, rather than treating each log event in isolation.</p></div></section><section class="case-section"><h2>From logs to representation</h2><div><ul><li>Windows API, registry, file-system and behavioural logs supply the input signals.</li><li>Python preprocessing and feature engineering convert those logs into semantic text.</li><li>GPT-2 and Hugging Face Transformers are used for fine-tuning and semantic representations for classification.</li></ul></div></section><section class="case-section"><h2>Research scope</h2><div><p>This project description is based on the supplied résumé. The provided repository could not be accessed during this update, so implementation details, dataset sizes, accuracy scores and evaluation results are left unspecified.</p></div></section><section class="case-section"><h2>Explore the pipeline</h2><div><p>Select the stages in the diagram to understand how raw events become a semantic representation. The diagram is explanatory and does not execute a malware scan or claim to identify threats in uploaded files.</p></div></section><section class="case-section"><h2>Source & further reading</h2><div><p><a href="https://github.com/Arnavmangarapu/SRDC-Ransomware-Detection" target="_blank" rel="noopener">SRDC on GitHub</a></p><p><a href="Mangarapu-Sree-Arnav-Resume.pdf" target="_blank" rel="noopener">Read my résumé</a></p></div></section></div><footer class="case-next"><p>Continue exploring</p><a href="helivision.html">Helivision ↗</a><a href="index.html#projects">All projects</a></footer></main></body></html>

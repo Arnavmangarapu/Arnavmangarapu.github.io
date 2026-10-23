@@ -14,9 +14,9 @@ window.portfolio = {
     {
       id: 'streamwatch', title: 'STREAMWATCH', year: '2025', category: 'Full-stack / Infrastructure',
       headline: 'See the system.\nUnderstand the signal.',
-      description: 'A real-time database monitoring and observability platform for understanding the health of databases and infrastructure.',
-      tags: ['React', 'Node.js', 'Prometheus', 'Grafana', 'MongoDB'],
-      repository: null, demo: null,
+      description: 'A database workspace combining natural-language MongoDB queries, secure account access and system monitoring.',
+      tags: ['React', 'FastAPI', 'MongoDB', 'Gemini', 'Prometheus', 'Grafana'],
+      repository: 'https://github.com/Arnavmangarapu/streamwatch', demo: null,
       details: ['Built a full-stack observability platform with React, Node.js, Express, Prometheus and Grafana.', 'Configured Prometheus scrape pipelines and MongoDB Exporters on Linux to collect, aggregate and visualise operational metrics.', 'Diagnosed and resolved distributed service communication failures across the observability stack.'],
       visual: 'monitor', image: null
     },
@@ -25,7 +25,7 @@ window.portfolio = {
       headline: 'Understanding behaviour.\nDetecting the threat.',
       description: 'Semantics-based ransomware detection using GPT-2, translating system behaviour into language for transformer-based learning.',
       tags: ['Python', 'GPT-2', 'Hugging Face Transformers'],
-      repository: null, demo: null,
+      repository: 'https://github.com/Arnavmangarapu/SRDC-Ransomware-Detection', demo: null,
       details: ['Converted Windows API, registry, file-system and behavioural logs into semantic text for transformer-based learning.', 'Implemented preprocessing and feature engineering workflows in Python for behaviour-based malware analysis.', 'Fine-tuned GPT-2 with Hugging Face Transformers to generate semantic representations for ransomware classification.'],
       visual: 'security', image: null
     }

@@ -7,10 +7,12 @@
   <meta name="description" content="Mangarapu Sree Arnav — Computer Science undergraduate exploring computer vision, full-stack development, machine learning and cybersecurity.">
   <title>Sree Arnav — Developer & AI Explorer</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="lenis.css">
-  <link rel="stylesheet" href="mouse-follower.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="lenis.css?v=20261023-projects">
+  <link rel="stylesheet" href="mouse-follower.min.css?v=20261023-projects">
+  <link rel="stylesheet" href="styles.css?v=20261023-projects">
+  <link rel="stylesheet" href="animations.css?v=20261023-projects">
+  <link rel="stylesheet" href="project-visuals.css?v=20261023-projects">
+  <link rel="stylesheet" href="refinements.css?v=20261023-projects">
   <script>
     let savedMotion;
     try { savedMotion = localStorage.getItem('portfolio-motion'); } catch {}
@@ -21,14 +23,16 @@
       setTimeout(() => document.documentElement.classList.remove('motion-pending'), 3500);
     }
   </script>
-  <script src="content.js" defer></script>
-  <script src="app.js" defer></script>
-  <script src="motion-controls.js" defer></script>
+  <script src="content.js?v=20261023-projects" defer></script>
+  <script src="project-visuals.js?v=20261023-projects" defer></script>
+  <script src="app.js?v=20261023-projects" defer></script>
+  <script src="transitions.js?v=20261023-projects" defer></script>
+  <script src="motion-controls.js?v=20261023-projects" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
-  <a href="#profile" class="wordmark" aria-label="Sree Arnav, back to profile">arnav<span>/</span>x</a>
+  <a href="#profile" class="wordmark" aria-label="Sree Arnav, back to profile">Arnav</a>
   <nav aria-label="Main navigation" id="navigation">
     <a href="#profile" aria-current="location"><span>01</span> Profile</a>
     <a href="#projects"><span>02</span> Projects</a>
@@ -76,15 +80,13 @@
     <div class="section-label"><span>04 / Skills</span><span aria-hidden="true">＋</span></div>
     <div class="section-opening"><h2 id="skills-title">THE TOOLKIT.</h2><p>Different tools.<br>One instinct to figure things out.</p></div>
     <div id="skill-list" class="skill-list"></div>
-    <div class="certifications"><p>Certifications & learning</p><ul><li>OCI AI Foundations Associate <span>2025</span></li><li>Anthropic: Introduction to Model Context Protocol</li><li>Anthropic: Model Context Protocol — Advanced Topics</li></ul></div>
   </section>
   <section id="contact" class="contact" aria-labelledby="contact-title">
     <div class="section-label"><span>05 / Contact me</span><span aria-hidden="true">＋</span></div>
     <div class="contact-heading"><h2 id="contact-title">LET'S BUILD<br>SOMETHING.</h2><a href="mailto:arnavmangarapu96@gmail.com" class="contact-arrow" aria-label="Email Arnav">↗</a></div>
     <div class="contact-bottom"><p>Have an idea, an opportunity,<br>or something interesting to share?<br>I'd love to hear about it.</p><div class="contact-links"><a href="mailto:arnavmangarapu96@gmail.com">arnavmangarapu96@gmail.com <span>↗</span></a><a href="https://github.com/Arnavmangarapu" target="_blank" rel="noopener">GitHub <span>↗</span></a><a href="https://www.linkedin.com/in/mangarapu-sree-arnav-612a98325/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a><button id="copy-email">Copy email address <span aria-hidden="true">⧉</span></button><span class="copy-status" role="status" aria-live="polite"></span></div></div>
-    <footer><a class="wordmark" href="#profile">arnav<span>/</span>x</a><span>© <span id="year">2026</span> Mangarapu Sree Arnav</span><a href="#profile">Back to top ↑</a></footer>
+    <footer><a class="wordmark" href="#profile">Arnav</a><span>© <span id="year">2026</span> Mangarapu Sree Arnav</span><a href="#profile">Back to top ↑</a></footer>
   </section>
 </main>
-<dialog id="project-dialog" data-lenis-prevent aria-labelledby="dialog-title"><div class="dialog-top"><span>Project notes</span><button id="close-dialog" aria-label="Close project details">✕</button></div><div id="dialog-content"></div></dialog>
 </body>
 </html>

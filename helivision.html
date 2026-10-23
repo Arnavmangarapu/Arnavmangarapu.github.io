@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12231f">
+  <meta name="description" content="A camera-based helmet prototype that turns visual detections into directional feedback.">
+  <title>Helivision — Arnav</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="lenis.css?v=20261023-projects">
+  <link rel="stylesheet" href="mouse-follower.min.css?v=20261023-projects">
+  <link rel="stylesheet" href="styles.css?v=20261023-projects">
+  <link rel="stylesheet" href="animations.css?v=20261023-projects">
+  <link rel="stylesheet" href="project-visuals.css?v=20261023-projects">
+  <link rel="stylesheet" href="refinements.css?v=20261023-projects">
+  <script>
+    let savedMotion;
+    try { savedMotion = localStorage.getItem('portfolio-motion'); } catch {}
+    const motionAllowed = savedMotion !== 'off' && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.toggle('motion-off', !motionAllowed);
+    if (motionAllowed) {
+      document.documentElement.classList.add('motion-pending');
+      setTimeout(() => document.documentElement.classList.remove('motion-pending'), 3500);
+    }
+  </script>
+  <script src="content.js?v=20261023-projects" defer></script>
+  <script src="project-visuals.js?v=20261023-projects" defer></script>
+  <script src="project-page.js?v=20261023-projects" defer></script>
+  <script src="transitions.js?v=20261023-projects" defer></script>
+  <script src="motion-controls.js?v=20261023-projects" defer></script>
+</head><body class="project-page" data-project="helivision"><header class="site-header case-header"><a class="wordmark" href="index.html#profile">Arnav</a><nav aria-label="Project navigation" id="navigation"><a href="index.html#projects">← All projects</a></nav><button class="motion-toggle" id="motion-toggle" role="switch" aria-checked="true" aria-label="Animations"><span class="motion-label">Motion on</span><span class="motion-track" aria-hidden="true"><span></span></span></button><span class="sr-only" id="motion-status" role="status" aria-live="polite"></span></header><main class="case-main" id="main"><section class="case-intro"><div class="section-label">Computer vision / Embedded systems / Project notes</div><h1>Helivision</h1><p>A camera-based helmet prototype that turns visual detections into directional feedback.</p><div id="case-tags" class="project-tags"></div><div class="case-links"><a href="https://github.com/Arnavmangarapu/helivision" target="_blank" rel="noopener">View repository ↗</a><a href="#story">Read the story ↓</a></div></section><section class="case-visual"><div><h2>Explore the system</h2><div id="case-diagram" data-visual="vision"></div></div><p>Hover, focus or tap the controls to explore. Diagram based on project documentation.</p></section><div class="case-story" id="story"><section class="case-section"><h2>The challenge</h2><div><p>Helivision explores how wearable computer vision can support partially visually impaired riders with information about nearby vehicles. It combines on-device inference with simple visual, audio and haptic feedback.</p></div></section><section class="case-section"><h2>From camera to cue</h2><div><ul><li>A camera service captures frames with Picamera2 and writes a shared image for the detection process.</li><li>TensorFlow Lite runs object detection on the Raspberry Pi, keeping inference on the device.</li><li>Detection information drives the prototype’s LED indicators, OLED displays, voice output and haptic cues.</li></ul></div></section><section class="case-section"><h2>Engineering work</h2><div><p>The work covers camera integration, an embedded inference pipeline and hardware feedback. Migrating to Picamera2 addressed camera and operating-system compatibility. The repository separates camera capture from detection so both processes can share a single stream.</p></div></section><section class="case-section"><h2>Prototype scope</h2><div><p>The repository describes a vision-only final prototype. Ultrasonic and radar sensing were explored experimentally and are not presented here as final components. The front-view illustration is a conceptual reconstruction of the documented hardware, rather than a photograph or measured assembly drawing. This is an assistive research prototype; no road-safety certification is claimed.</p></div></section><section class="case-section"><h2>Source & further reading</h2><div><p><a href="https://github.com/Arnavmangarapu/helivision" target="_blank" rel="noopener">Helivision on GitHub</a></p><p><a href="Mangarapu-Sree-Arnav-Resume.pdf" target="_blank" rel="noopener">Read my résumé</a></p></div></section></div><footer class="case-next"><p>Continue exploring</p><a href="streamwatch.html">StreamWatch ↗</a><a href="index.html#projects">All projects</a></footer></main></body></html>

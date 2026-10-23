@@ -9,7 +9,7 @@
   try { preference = localStorage.getItem('portfolio-motion') || 'on'; } catch {}
   const loadScript = src => new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = src;
+    script.src = src + '?v=20261023-projects';
     script.onload = resolve;
     script.onerror = () => { script.remove(); reject(new Error('Animation script unavailable')); };
     document.head.append(script);
